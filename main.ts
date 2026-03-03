@@ -9,24 +9,16 @@ function CriaCores () {
     }
     Verde = NúmeroLeds - (Vermelho + Amarelo)
     ListaCores = []
-    for (let índice = 0; índice <= Verde; índice++) {
+    for (let índice = 0; índice <= Verde - 1; índice++) {
         ListaCores.push(neopixel.colors(NeoPixelColors.Green))
     }
-    for (let índice = 0; índice <= Amarelo; índice++) {
+    for (let índice = 0; índice <= Amarelo - 1; índice++) {
         ListaCores.push(neopixel.colors(NeoPixelColors.Yellow))
     }
-    for (let índice = 0; índice <= Vermelho; índice++) {
+    for (let índice = 0; índice <= Vermelho - 1; índice++) {
         ListaCores.push(neopixel.colors(NeoPixelColors.Red))
     }
 }
-input.onButtonPressed(Button.A, function () {
-    serial.writeValue("Vermelho", Vermelho)
-    serial.writeValue("Amarelo", Amarelo)
-    serial.writeValue("Verde", Verde)
-    for (let índice = 0; índice <= NúmeroLeds; índice++) {
-        serial.writeValue(convertToText(índice), ListaCores[índice])
-    }
-})
 function AudioBuffer () {
     NivSom = 0
     if (input.soundLevel() > NívelSomMAx) {
